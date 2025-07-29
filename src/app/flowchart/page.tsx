@@ -27,7 +27,7 @@ export default function FlowchartPage() {
         <div className="bg-slate-100 border-l-4 border-red-500 p-5 my-5 rounded-lg">
           <div className="font-bold text-slate-800 mb-2">Example:</div>
           <div className="text-slate-700">
-            "I'm Sarah. I run a family child care program with a high school diploma. I want to grow professionally but don't know where to start."
+              "I&apos;m Sarah. I run a family child care program with a high school diploma. I want to grow professionally but don&apos;t know where to start."
           </div>
         </div>
         
