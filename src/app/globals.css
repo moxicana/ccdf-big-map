@@ -3,24 +3,171 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --primary: #2563eb;
+  --primary-foreground: #f8fafc;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+}
+
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --primary-foreground: #f8fafc;
+  --secondary: #334155;
+  --secondary-foreground: #f1f5f9;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --border: #334155;
+}
+
+[data-theme="retro"] {
+  --background: #0f0f23;
+  --foreground: #ff00ff;
+  --card: #1a1a2e;
+  --card-foreground: #00ffff;
+  --primary: #ff00ff;
+  --primary-foreground: #0f0f23;
+  --secondary: #16213e;
+  --secondary-foreground: #ff00ff;
+  --muted: #0e3460;
+  --muted-foreground: #00ffff;
+  --border: #ff1493;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-family-sans: var(--font-open-sans), system-ui, -apple-system, sans-serif;
+  --font-family-serif: var(--font-dm-serif-display), serif;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --card: #1e293b;
+    --card-foreground: #f1f5f9;
+    --primary: #3b82f6;
+    --primary-foreground: #f8fafc;
+    --secondary: #334155;
+    --secondary-foreground: #f1f5f9;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --border: #334155;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-open-sans), system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-dm-serif-display), serif;
+}
+
+.font-serif {
+  font-family: var(--font-dm-serif-display), serif !important;
+}
+
+.font-sans {
+  font-family: var(--font-open-sans), system-ui, -apple-system, sans-serif !important;
+}
+
+/* Synthwave Grid Background */
+.synthwave-grid {
+  position: relative;
+  background: radial-gradient(ellipse at center bottom, rgba(255, 20, 147, 0.4) 0%, rgba(15, 15, 35, 1) 70%);
+  overflow: hidden;
+}
+
+.synthwave-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(rgba(255, 0, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 255, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(300px) rotateX(60deg) translateY(50%);
+  transform-origin: bottom center;
+  animation: synthwave-pulse 4s ease-in-out infinite alternate;
+}
+
+.synthwave-grid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(rgba(0, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 80px 80px;
+  transform: perspective(300px) rotateX(60deg) translateY(60%);
+  transform-origin: bottom center;
+  animation: synthwave-pulse 4s ease-in-out infinite alternate reverse;
+}
+
+.synthwave-mountains {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cdefs%3E%3ClinearGradient id='mountain1' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff00ff' stop-opacity='0.8'/%3E%3Cstop offset='100%25' stop-color='%23ff1493' stop-opacity='0.2'/%3E%3C/linearGradient%3E%3ClinearGradient id='mountain2' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300ffff' stop-opacity='0.6'/%3E%3Cstop offset='100%25' stop-color='%23ff00ff' stop-opacity='0.1'/%3E%3C/linearGradient%3E%3ClinearGradient id='mountain3' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff1493' stop-opacity='0.7'/%3E%3Cstop offset='100%25' stop-color='%23ff00ff' stop-opacity='0.3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='0,400 200,200 400,400' fill='url(%23mountain1)'/%3E%3Cpolygon points='150,400 450,150 650,400' fill='url(%23mountain2)'/%3E%3Cpolygon points='350,400 600,180 850,400' fill='url(%23mountain3)'/%3E%3Cpolygon points='550,400 800,120 1050,400' fill='url(%23mountain1)'/%3E%3Cpolygon points='750,400 1000,160 1200,400' fill='url(%23mountain2)'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  z-index: 2;
+  animation: synthwave-mountains 6s ease-in-out infinite alternate;
+}
+
+@keyframes synthwave-mountains {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+    transform: translateY(0px);
+  }
+  100% {
+    filter: hue-rotate(15deg) brightness(1.2);
+    transform: translateY(-2px);
+  }
+}
+
+/* Custom select dropdown arrow positioning */
+select {
+  background-position: right 0.75em center !important;
+}
+
+@keyframes synthwave-pulse {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  100% {
+    filter: hue-rotate(10deg) brightness(1.1);
+  }
 }
